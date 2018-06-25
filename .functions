@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
+alias oxys='cd /media/Oxys'
+alias cdp='oxys; gotoproject'
+gotoproject() {
+cd `find . -maxdepth 1 -type d -o -type l | grep $1 | head -n1`
+cd `find . -maxdepth 1 -type d -o -type l | grep $1 | head -n1`
+}
+
+gitc() {
+#do things with parameters like $1 such as
+git add -A
+git commit -m"$1"
+git push
+}
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$_";
