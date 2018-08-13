@@ -14,6 +14,11 @@ git commit -m"$1"
 git push
 }
 
+# Find Drupal module
+moduleversion() {
+find . -type f -name "$1.info" -exec grep -nw 'version' {} + && find . -type f -name "composer.json" -exec grep -nw 'drupal/$1' {} +
+}
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$_";
