@@ -2,11 +2,19 @@
 
 alias oxys='cd /media/Oxys'
 alias cdp='oxys; gotoproject'
-alias startp='oxys; gotoproject; git pull; cd vagrant && vagrant up'
+alias startp='oxys; startproject'
+
 gotoproject() {
 cd `find . -maxdepth 1 -type d -o -type l | grep $1 | head -n1`
 cd `find . -maxdepth 1 -type d -o -type l | grep $1 | head -n1`
 }
+
+startproject() {
+gotoproject $1
+git pull
+cd vagrant && vagrant up && cd ..
+}
+
 
 gitc() {
 #do things with parameters like $1 such as
